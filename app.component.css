@@ -1,0 +1,9 @@
+.form-control{
+  width: 20%;
+}
+.ng-invalid { }
+.ng-valid { }
+.ng-untouched { }
+.ng-touched { }
+.ng-dirty { }
+.ng-pristine { }

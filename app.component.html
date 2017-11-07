@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+<h1>{{ title }}</h1>
+<h3>Account Information</h3>
+<div class="container">
+  <div *ngIf="formData.valid">
+    <p>You have successfully entered all the required information!</p>
+
+  </div>
+<form (submit)="onSubmit()" name="myForm" #formData='ngForm'>
+  <label for="firstName">First Name:</label>
+  <input class="form-control" type="text" name="firstName" required minlength="2" maxlength="20" [(ngModel)]="user.firstName" #firstName="ngModel" />
+  <label for="lastName">Last Name:</label>
+  <input class="form-control" type="text" name="lastName" required minlength="2" maxlength="25" [(ngModel)]="user.lastName" #lastName="ngModel" />
+  <label for="email">Email:</label>
+  <input class="form-control" type="email" name="email" required minlength="8" [(ngModel)]="user.email" #email="ngModel" />
+  <label for="password">Password:</label>
+  <input class="form-control" type="password" name="password" required minlength="6" [(ngModel)]="user.password" #password="ngModel" />
+  <label for="address">Street Address:</label>
+  <input class="form-control" type="text" name="address" required minlength="4" [(ngModel)]="user.address" #address="ngModel" />
+  <label for="unit">Unit/Apt #:</label>
+  <input class="form-control" type="text" name="unit" [(ngModel)]="user.unit" #unit="ngModel" />
+  <label for="city">City:</label>
+  <input class="form-control" type="text" name="city" required min="2" [(ngModel)]="user.city" #city="ngModel" />
+  <label for="state">State:</label>
+  <select required name="state" [(ngModel)]="user.state" #state="ngModel">
+    <option value="Alaska">Alaska</option>
+    <option value="California">California</option>
+    <option value="Hawaii">Hawaii</option>
+    <option value="New York">New York</option>
+    <option value="Oregon">Oregon</option>
+    <option value="Washington">Washington</option>
+  </select>
+
+<p>
+ <label for="feeling">Are you feeling lucky?</label>
+ <input type="radio" name="feeling" value="Yes"  [(ngModel)]="user.feeling" #feeling="ngModel" />Yes
+ <input type="radio" name="feeling" value="No"  [(ngModel)]="user.feeling" #feeling="ngModel" />No
+</p>
+
+    <div *ngIf="!firstName.valid">First Name is invalid.</div>
+    <div *ngIf="!lastName.valid">Last Name is invalid.</div>
+    <div *ngIf="!email.valid">Email is invalid.</div>
+    <div *ngIf="!password.valid">Password is invalid.</div>
+    <div *ngIf="!address.valid">Address is invalid.</div>
+    <div *ngIf="!city.valid">City is required.</div>
+    <div *ngIf="!state.valid">State is required.</div>
+
+
+    <input type="submit" value="Register">
+
+</form>
+
+
+</div>
